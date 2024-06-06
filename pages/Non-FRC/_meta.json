@@ -1,4 +1,11 @@
 {
   "IntroductionToProgramming": "Introduction to Java Programming",
-  "JavaCore": "Learn Java Programming"
+  "JavaBasics": "Java Basics",
+  "ControlFlowStatements": "Control Flow Statements",
+  "Object-OrientedProgrammingConcepts":"OOPS - Concept",
+  "OOPS-Usecase": "OOPS - UseCase",
+  "JavaCollectionsFramework": "Java Collections Framework",
+  "ExceptionHandling": "Exception Handling",
+
+  "JavaCore": "Check Point #01"
 }

@@ -4,10 +4,7 @@ const withNextra = require('nextra')({
     themeConfig: './theme.config.jsx',
 
 })
-module.exports = withNextra({
-    footerText: `FEDS201 ${new Date().getFullYear()} © FEDS201.`
-    }
-)
+module.exports = withNextra(undefined)
 
 
 

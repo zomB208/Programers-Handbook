@@ -3,6 +3,8 @@ title: Introduction Limelight with OS Framework
 ---
 
 import { Tabs } from 'nextra/components'
+import { Cards, Card } from 'nextra/components'
+import { CiBookmarkPlus } from "react-icons/ci";
 
 <Tabs items={['Limelight OS', 'Photon OS']}>
     <Tabs.Tab>
@@ -107,30 +109,151 @@ import { Tabs } from 'nextra/components'
         | robot_orientation_set       | doubleArray   | SET Robot Orientation and angular velocities in degrees and degrees per second[yaw,yawrate,pitch,pitchrate,roll,rollrate] |
         | fiducial_id_filters_set     | intArray      | Override valid fiducial ids for localization (array) |
 
+        ### Libraries
+        <br />
+        <Card icon={<CiBookmarkPlus />} title="Limelight Library" target={'_blank'} href="https://raw.githubusercontent.com/LimelightVision/limelightlib-wpijava/main/LimelightHelpers.java" />
+
 
     </Tabs.Tab>
     <Tabs.Tab>
-        - Photon OS is a lightweight, open-source operating system that is designed to run on the Photon hardware.
-        - Photon OS is based on the Linux kernel.
-        - Photon OS is designed to be fast, reliable, and easy to use.
+
+        PhotonVision is an open-source computer vision library designed specifically for use in robotics competitions like FIRST Robotics Competition (FRC). It simplifies robot perception tasks by providing tools for:
+
+        - Object Detection: Using pre-trained models or custom models (future update), PhotonVision can identify and locate objects in camera images.
+        - AprilTag Detection: It can effectively detect and track AprilTags, fiducial markers commonly used in robotics for pose estimation (determining robot location and orientation).
+        - Pipeline Creation: No coding is required for basic tasks. PhotonVision offers a web interface to configure pipelines for various computer vision applications.
+        - Custom Scripting: For advanced users, SnapScript, a Python-like language, allows for creating custom pipelines with libraries like TensorFlow and OpenCV.
+
+        ## Key Features of PhotonVision
+
+        - Ease of Use: Designed to be accessible for both beginners and professionals.
+        - Zero-Code Pipelines: Build pipelines for color blobs, AprilTags, and neural networks through a web interface.
+        - Custom Scripting: Use SnapScript for advanced tasks and integration with libraries like TensorFlow and OpenCV.
+        - Hardware Compatibility: Integrates with Orange Pi 5/5+ coprocessors and their Neural Processing Units (NPUs) for accelerated performance.
+        - Multiple Communication Protocols: Supports various communication protocols (REST/HTTP, Websocket, Modbus, NetworkTables) for data exchange with robot controllers.
+        - Data Formats: Outputs data in JSON, Protobuf, and raw formats for flexibility in integration.
+        - Multiple Cameras: Can handle multiple cameras simultaneously for different vision tasks.
+
+        ## Additional Details
 
         ### Accessing API
-        - Photon OS provides a NetworkTables API for accessing Photon data and controlling Photon settings.
+        - Photon OS provides a NetworkTables API for accessing Limelight data and controlling Limelight settings.
         - NetworkTables is a protocol for distributed data storage and retrieval.
         - NetworkTables is used by the FIRST Robotics Competition (FRC) and other robotics competitions.
         - To get the Data, you need to use this code
         ```java
-        NetworkTableInstance.getDefault().getTable("photon").getEntry("<variablename/>").getDouble(0);
+        NetworkTableInstance.getDefault().getTable("photonvision").getEntry("<variablename/>").getDouble(0);
         ```
         - To set the Data, you need to use this code
         ```java
-        NetworkTableInstance.getDefault().getTable("photon").getEntry("<variablename/>").setDouble(0);
+        NetworkTableInstance.getDefault().getTable("photonvision").getEntry("<variablename/>").setDouble(0);
         ```
-        - To get the 3D Data, you need to use this code
+        - To initialize the PhotonVision, you need to use this code
         ```java
-        NetworkTableInstance.getDefault().getTable("photon").getEntry("<variablename/>").getDoubleArray(new double[6]);
+        // Change this to match the name of your camera
+        PhotonCamera camera = new PhotonCamera("photonvision");
+        ```
+
+        - To get the result, you need to use this code
+        ```java
+        PhotonPipelineResult result = camera.getLatestResult();
+        ```
+
+        - To Check for Existence of Targets, you need to use this code
+        ```java
+        // Check if the pipeline has targets
+        boolean hasTargets = result.hasTargets();
+        ```
+        - To get the list of targets, you need to use this code
+        ```java
+        // Get the list of targets
+        List<PhotonTrackedTarget> targets = result.getTargets();
+        ```
+
+        - To get the target, you need to use this code
+        ```java
+        // Get the first target
+        PhotonTrackedTarget target = targets.get(0);
+        ```
+        - To get the target data, you need to use this code
+        ```java
+        // Get the target data
+        double yaw = target.getYaw();
+        double pitch = target.getPitch();
+        double area = target.getArea();
+        double skew = target.getSkew();
+        double[] pose = target.getPose();
+        double pixelsX = target.getPixelsX();
+        double pixelsY = target.getPixelsY();
+        ```
+        - To get the latency, you need to use this code
+        ```java
+        // Get the pipeline latency
+        double latency = result.getLatencyMillis();
+        ```
+        - To get the raw bytes, you need to use this code
+        ```java
+        // Get the raw bytes
+        byte[] rawBytes = result.getRawBytes();
         ```
 
 
+
+        ### Web Interface
+        - PhotonVision's web interface allows users to easily configure settings, manage pipelines, and view real-time data.
+        - It provides a user-friendly environment for both beginners and professionals to work with computer vision tasks.
+
+        ### SnapScript
+        - SnapScript is a Python-like language embedded within PhotonVision.
+        - It allows users to create custom pipelines using libraries like TensorFlow and OpenCV.
+        - This feature is particularly useful for advanced users who want to tailor the pipelines to their specific needs.
+
+        ### Compatible with Google Coral
+        - PhotonVision is compatible with the Google Coral USB Accelerator.
+        - This USB device provides hardware acceleration for neural networks, significantly improving the performance of object detection tasks.
+
+        ### Robot Localization
+        - PhotonVision enables robot localization using AprilTags.
+        - This feature allows the robot to determine its position and orientation in a known environment.
+        - Which is crucial for tasks that require precise movement and positioning.
+
+        ### PhotonOS
+        - PhotonVision runs on PhotonOS, a custom operating system designed specifically for the PhotonVision hardware.
+        - PhotonOS is based on the Linux kernel and is optimized for fast and reliable performance in robotics applications.
+
+        ### Basic Targeting Data API
+
+        | Key                     | Type          | Description |
+        |-------------------------|---------------|-------------|
+        | rawBytes                | byte[]        | A byte-packed string that contains target info from the same timestamp. |
+        | latencyMillis           | double        | The latency of the pipeline in milliseconds. |
+        | hasTarget               | boolean       | Whether the pipeline is detecting targets or not. |
+        | targetPitch             | double        | The pitch of the target in degrees (positive up). |
+        | targetYaw               | double        | The yaw of the target in degrees (positive right). |
+        | targetArea              | double        | The area (percent of bounding box in screen) as a percent (0-100). |
+        | targetSkew              | double        | The skew of the target in degrees (counter-clockwise positive). |
+        | targetPose              | double[]      | The pose of the target relative to the robot (x, y, z, qw, qx, qy, qz) |
+        | targetPixelsX           | double        | The target crosshair location horizontally, in pixels (origin top-right) |
+        | targetPixelsY           | double        | The target crosshair location vertically, in pixels (origin top-right) |
+
+
+
+        ### Other Utils API
+
+        | Key                 | Type      | Description |
+        |---------------------|-----------|-------------|
+        | ledMode             | int       | Sets the LED Mode (-1: default, 0: off, 1: on, 2: blink) |
+        | inputSaveImgCmd     | boolean   | Triggers saving the current input image to file. |
+        | outputSaveImgCmd    | boolean   | Triggers saving the current output image to file. |
+        | pipelineIndex       | int       | Changes the pipeline index. |
+        | driverMode          | boolean   | Toggles driver mode. |
+
+        ### Libraries
+        <br />
+        <Card icon={<CiBookmarkPlus />} title="Photon Library" target={'_blank'} href="https://maven.photonvision.org/repository/internal/org/photonvision/photonlib-json/1.0/photonlib-json-1.0.json" />
+
+        ### PhotonVision Documentation
+        <br />
+        <Card icon={<CiBookmarkPlus />} title="PhotonVision Documentation" target={'_blank'} href="https://docs.photonvision.org/" />
     </Tabs.Tab>
 </Tabs>

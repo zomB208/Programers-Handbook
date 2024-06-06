@@ -1,0 +1,273 @@
+---
+title: Use of OOP in Java
+---
+
+# Use of OOP in Java
+
+## Classes and Objects
+
+Java is an object-oriented programming language. Everything in Java is associated with classes and objects, along with its attributes and methods. For example: in real life, a car is an object. The car has attributes, such as weight and color, and methods, such as drive and brake.
+
+A Class is like an object constructor, or a "blueprint" for creating objects.
+```java
+class Car { // class definition
+  int modelYear;
+  String modelName;
+}
+```
+
+An object is created from a class. We can create many objects from a class. An object is also called an instance of a class.
+
+```java
+public class Main {
+  public static void main(String[] args) {
+    Car myCar = new Car(); // create an object of Car
+    myCar.modelYear = 1969; // set the value of the modelYear attribute to 1969
+    myCar.modelName = "Mustang"; // set the value of the modelName attribute to Mustang
+    System.out.println(myCar.modelYear + " " + myCar.modelName); // output the value of the modelYear and modelName attributes
+  }
+}
+```
+```sh
+PC $ java Main
+
+1969 Mustang
+```
+
+## Encapsulation
+
+
+Encapsulation in Java is a mechanism of wrapping the data (variables) and code acting on the data (methods) together as a single unit.
+In encapsulation, the variables of a class will be hidden from other classes, and can be accessed only through the methods of their current class. Therefore, it is also known as data hiding.
+
+There are 3 access modifiers in Java:
+- private: The code is only accessible within the declared class.
+- public: The code is accessible from all classes.
+- protected: The code is accessible in the same package and subclasses.
+
+### Private Variables
+
+```java
+class Person {
+  private String name; // private variable
+}
+
+class Main {
+  public static void main(String[] args) {
+    Person myObj = new Person();
+    myObj.name = "John"; // error
+    System.out.println(myObj.name); // error
+  }
+}
+```
+```sh
+PC $ java Main
+
+Main.java:6: error: name has private access in Person
+    myObj.name = "John"; // error
+         ^
+Main.java:7: error: name has private access in Person
+
+    System.out.println(myObj.name); // error
+                           ^
+2 errors
+```
+Did you get an error? Because you cannot access a private variable from outside the class.
+
+### Public Variables
+
+```java
+class Person {
+  private String name; // private variable
+  public String getName() { // getter method
+    return name;
+  }
+  public void setName(String newName) { // setter method
+    this.name = newName;
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    Person myObj = new Person();
+    myObj.setName("John");
+    System.out.println(myObj.getName());
+  }
+}
+```
+```sh
+PC $ java Main
+
+John
+```
+
+### Protected Variables
+
+```java
+class Person {
+  protected String name; // protected variable
+}
+
+class Student extends Person {
+  private int graduationYear;
+  public static void main(String[] args) {
+    Student myObj = new Student();
+    myObj.graduationYear = 2010;
+    myObj.name = "John";
+    System.out.println("Name: " + myObj.name);
+    System.out.println("Graduation Year: " + myObj.graduationYear);
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    Student myObj = new Student();
+    myObj.graduationYear = 2010;
+    myObj.name = "John";
+    System.out.println("Name: " + myObj.name);
+    System.out.println("Graduation Year: " + myObj.graduationYear);
+  }
+}
+
+```
+```sh
+PC $ java Main
+
+Name: John
+Graduation Year: 2010
+```
+
+
+To achieve encapsulation in Java:
+- Declare the variables of a class as private.
+- Provide public setter and getter methods to modify and view the variables values.
+
+
+
+```java
+class Person {
+  private String name; // private variable
+  public String getName() { // getter method
+    return name;
+  }
+  public void setName(String newName) { // setter method
+    this.name = newName;
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    Person myObj = new Person();
+    myObj.setName("John");
+    System.out.println(myObj.getName());
+  }
+}
+```
+```sh
+PC $ java Main
+
+John
+```
+
+## Inheritance
+
+Inheritance is a mechanism in which one class acquires the properties and behavior of another class. The class that inherits the properties of another class is known as a subclass (derived class), and the class whose properties are inherited is known as a superclass (base class).
+
+```java
+class Animal {
+  void eat() {
+    System.out.println("eating...");
+  }
+}
+class Dog extends Animal {
+  void bark() {
+    System.out.println("barking...");
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Dog d = new Dog();
+    d.bark();
+    d.eat();
+  }
+}
+```
+```sh
+PC $ java Main
+
+barking...
+eating...
+```
+
+## Polymorphism
+
+Polymorphism means "many forms", and it occurs when we have many classes that are related to each other by inheritance.
+
+```java
+class Animal {
+  void sound() {
+    System.out.println("Animal makes a sound");
+  }
+}
+class Dog extends
+Animal {
+  void sound() {
+    System.out.println("Dog barks");
+  }
+}
+class Cat extends
+Animal {
+  void sound() {
+    System.out.println("Cat meows");
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Animal myAnimal = new Animal();
+    Animal myDog = new Dog();
+    Animal myCat = new Cat();
+    myAnimal.sound();
+    myDog.sound();
+    myCat.sound();
+  }
+}
+```
+```sh
+PC $ java Main
+
+Animal makes a sound
+Dog barks
+Cat meows
+```
+
+## Abstraction
+
+Abstraction is a process of hiding the implementation details and showing only functionality to the user.
+
+```java
+abstract class Animal {
+  abstract void sound();
+}
+
+class Dog extends
+Animal {
+  public void sound() {
+    System.out.println("Dog barks");
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Dog myDog = new Dog();
+    myDog.sound();
+  }
+}
+```
+```sh
+PC $ java Main
+
+Dog barks
+```
+

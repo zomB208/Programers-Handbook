@@ -1,0 +1,357 @@
+---
+title: Java Basics
+---
+
+# Java Basics
+
+## Introduction
+
+Java is a high-level programming language developed by Sun Microsystems. It was originally designed for developing programs for set-top boxes and handheld devices, but later became a popular choice for creating web applications.
+
+The Java syntax is similar to C++, but is strictly an object-oriented programming language. For example, most Java programs contain classes, which are used to define objects, and methods, which are assigned to individual classes. Java is also known for being more strict than C++, meaning variables and functions must be explicitly defined.
+
+## Hello World
+
+The first program you write in any programming language is called "Hello World". All it does is display the text "Hello World" on the screen. In Java, the "Hello World" program looks like this:
+
+```java
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+
+```
+
+## Java Syntax
+
+Java is a case-sensitive language. This means that the language keywords, variables, function names, and any other identifiers must always be typed with a consistent capitalization of letters. The following are valid examples:
+
+```java
+int age = 20;
+int Age = 20;
+int AGE = 20;
+```
+
+The following are invalid examples:
+
+```java
+int agE = 20;
+int aGe = 20;
+```
+
+## Java Variables
+
+A variable is a container which holds the value while the Java program is executed. A variable is assigned with a data type. Variable is the name of memory location allocated by the JVM. There are three types of variables in Java:
+
+- Local Variables
+- Instance Variables
+- Static Variables
+
+### Local Variables
+
+A variable declared inside the body of the method is called local variable. You can use this variable only within that method and the other methods in the class aren't even aware that the variable exists.
+
+```java
+public class LocalVariableExample {
+    public void myMethod() {
+        int num = 23; // local variable
+        System.out.println(num);
+    }
+
+    public static void main(String args[]) {
+        LocalVariableExample obj = new LocalVariableExample();
+        obj.myMethod();
+    }
+}
+```
+
+### Instance Variables
+
+Instance variables are non-static variables and are declared in a class outside any method, constructor or block.
+
+```java
+
+public class InstanceVariableExample {
+    // this instance variable is visible for any child class.
+    public String name;
+
+    // salary variable is visible in InstanceVariableExample class only.
+    private double salary;
+
+    // The name variable is assigned in the constructor.
+    public InstanceVariableExample(String empName) {
+        name = empName;
+    }
+
+    // The salary variable is assigned a value.
+    public void setSalary(double empSal) {
+        salary = empSal;
+    }
+
+    // This method prints the employee details.
+    public void printEmp() {
+        System.out.println("name  : " + name);
+        System.out.println("salary :" + salary);
+    }
+
+    public static void main(String args[]) {
+        InstanceVariableExample empOne = new InstanceVariableExample("James");
+        empOne.setSalary(1000);
+        empOne.printEmp();
+    }
+}
+```
+
+### Static Variables
+
+Static variables are declared with the static keyword in a class, but outside a method, constructor or a block.
+
+```java
+public class StaticVariableExample {
+    // salary variable is a private static variable
+    private static double salary;
+
+    // DEPARTMENT is a constant
+    public static final String DEPARTMENT = "Development ";
+
+    public static void main(String args[]) {
+        salary = 1000;
+        System.out.println(DEPARTMENT + "average salary:" + salary);
+    }
+}
+```
+
+## Java Data Types
+
+Data types specify the different sizes and values that can be stored in the variable. There are two types of data types in Java:
+
+- Primitive data types: The primitive data types include boolean, char, byte, short, int, long, float and double.
+
+- Non-primitive data types: The non-primitive data types include Classes, Interfaces, and Arrays.
+
+
+
+### Primitive Data Types
+
+There are eight primitive data types in Java:
+
+- byte
+- short
+- int
+- long
+- float
+- double
+- boolean
+- char
+
+```java
+
+public class PrimitiveDataTypeExample {
+    public static void main(String[] args) {
+        byte num1 = 127;
+        short num2 = 32767;
+        int num3 = 2147483647;
+        long num4 = 9223372036854775807L;
+        float num5 = 3.4e+38f;
+        double num6 = 1.7e+308;
+        boolean flag = true;
+        char a = 'A';
+
+        System.out.println("byte: " + num1);
+        System.out.println("short: " + num2);
+        System.out.println("int: " + num3);
+        System.out.println("long: " + num4);
+        System.out.println("float: " + num5);
+        System.out.println("double: " + num6);
+        System.out.println("boolean: " + flag);
+        System.out.println("char: " + a);
+    }
+}
+```
+
+### Non-Primitive Data Types
+
+Non-primitive data types are called reference types because they refer to objects. The main difference between primitive and non-primitive data types are:
+
+- Primitive types are predefined (already defined) in Java.
+- Non-primitive types are created by the programmer and are not defined by Java (except for String).
+
+The non-primitive data types are used to call methods to perform certain operations, while primitive types are used to store values.
+
+```java
+public class NonPrimitiveDataTypeExample {
+    public static void main(String[] args) {
+        String name = "James";
+        System.out.println(name);
+    }
+}
+```
+
+```sh
+PS C:\\Users\\Feds > run example
+
+    ------ Java Output ------
+    James
+```
+
+## Java Operators
+
+Operators are special symbols that perform specific operations on one, two, or three operands, and then return a result. For example, the + operator adds two numbers together.
+
+### Java Arithmetic Operators
+
+Arithmetic operators are used to perform common mathematical operations.
+
+```java
+public class ArithmeticOperatorsExample {
+    public static void main(String[] args) {
+        int num1 = 100;
+        int num2 = 20;
+
+        System.out.println("num1 + num2: " + (num1 + num2));
+        System.out.println("num1 - num2: " + (num1 - num2));
+        System.out.println("num1 * num2: " + (num1 * num2));
+        System.out.println("num1 / num2: " + (num1 / num2));
+        System.out.println("num1 % num2: " + (num1 % num2));
+    }
+}
+```
+
+```sh
+PS C:\\Users\\Feds > run example
+
+    ------ Java Output ------
+    num1 + num2: 120
+    num1 - num2: 80
+    num1 * num2: 2000
+    num1 / num2: 5
+    num1 % num2: 0
+````
+
+### Java Relational Operators
+
+Relational operators are used to check the relationship between two operands.
+
+```java
+public class RelationalOperatorsExample {
+    public static void main(String[] args) {
+        int num1 = 10;
+        int num2 = 50;
+
+        System.out.println("num1 == num2: " + (num1 == num2));
+        System.out.println("num1 != num2: " + (num1 != num2));
+        System.out.println("num1 > num2: " + (num1 > num2));
+        System.out.println("num1 < num2: " + (num1 < num2));
+        System.out.println("num1 >= num2: " + (num1 >= num2));
+        System.out.println("num1 <= num2: " + (num1 <= num2));
+    }
+}
+```
+
+```
+PS C:\\Users\\Feds > run example
+
+    ------ Java Output ------
+    num1 == num2: false
+    num1 != num2: true
+    num1 > num2: false
+    num1 < num2: true
+    num1 >= num2: false
+    num1 <= num2: true
+```
+
+### Java Logical Operators
+
+Logical operators are used to determine the logic between variables or values.
+
+```java
+public class LogicalOperatorsExample {
+    public static void main(String[] args) {
+        boolean b1 = true;
+        boolean b2 = false;
+
+        System.out.println("b1 && b2: " + (b1 && b2));
+        System.out.println("b1 || b2: " + (b1 || b2));
+        System.out.println("!(b1 && b2): " + !(b1 && b2));
+    }
+}
+```
+
+```sh
+PS C:\\Users\\Feds > run example
+
+    ------ Java Output ------
+    b1 && b2: false
+    b1 || b2: true
+    !(b1 && b2): true
+```
+
+### Java Assignment Operators
+
+Assignment operators are used to assign values to variables.
+
+```java
+
+public class AssignmentOperatorsExample {
+    public static void main(String[] args) {
+        int num1 = 10;
+        int num2 = 20;
+        int result;
+
+        result = num1 + num2;
+        System.out.println("num1 + num2: " + result);
+
+        result = num1 - num2;
+        System.out.println("num1 - num2: " + result);
+
+        result = num1 * num2;
+        System.out.println("num1 * num2: " + result);
+
+        result = num1 / num2;
+        System.out.println("num1 / num2: " + result);
+
+        result = num1 % num2;
+        System.out.println("num1 % num2: " + result);
+    }
+}
+```
+
+```sh
+PS C:\\Users\\Feds > run example
+
+    ------ Java Output ------
+    num1 + num2: 30
+    num1 - num2: -10
+    num1 * num2: 200
+    num1 / num2: 0
+    num1 % num2: 10
+```
+
+### Java Conditional Operators
+
+Conditional operators are used to evaluate a condition that determines whether a statement is true or false.
+
+```java
+
+public class ConditionalOperatorsExample {
+    public static void main(String[] args) {
+        int num1 = 10;
+        int num2 = 50;
+        int result;
+
+        result = (num1 > num2) ? num1 : num2;
+        System.out.println("result: " + result);
+    }
+}
+
+```
+
+```sh
+PS C:\\Users\\Feds > run example
+
+    ------ Java Output ------
+    result: 50
+```
+
+

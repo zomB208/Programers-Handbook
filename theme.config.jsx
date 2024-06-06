@@ -15,9 +15,11 @@ export default {
         )
     },
     editLink: {
-        text: 'Edit this page on GitHub',
-        href: 'https://github.com/Rochester-CS-Club/CS-CLUB-WEBSITE',
+        text: '',
+        component: 'Edit this page on GitHub',
+        useLink: () => 'https://github.com/your-repo/edit/master/path/to/file',
     },
+    
     banner: {
         key: '1.0-release',
         text: (

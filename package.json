@@ -4,7 +4,8 @@
     "nextra": "^2.13.4",
     "nextra-theme-docs": "^2.13.4",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.2.1"
   },
   "scripts": {
     "dev": "next",
@@ -12,4 +13,3 @@
     "start": "next start"
   }
 }
-

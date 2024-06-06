@@ -1,0 +1,117 @@
+---
+title: Control Flow Statements
+---
+
+# Control Flow Statements
+
+Control flow statements are used to control the flow of execution in a program. They are used to make decisions, loop over code blocks, and define functions.
+
+## If Statements
+
+The `if` statement is used to execute a block of code if a condition is true.
+
+```java
+if (condition) {
+    // code block
+}
+```
+
+The `else` statement is used to execute a block of code if the condition is false.
+
+```java
+if (condition) {
+    // code block
+} else {
+    // code block
+}
+```
+
+The `else if` statement is used to execute a block of code if the condition is false and another condition is true.
+
+```java
+if (condition) {
+    // code block
+} else if (condition) {
+    // code block
+}
+```
+
+## Switch Statements
+
+The `switch` statement is used to execute a block of code based on the value of a variable.
+
+```java
+switch (expression) {
+    case value1:
+        // code block
+        break;
+    case value2:
+        // code block
+        break;
+    default:
+        // code block
+}
+```
+
+## Loops
+
+Loops are used to execute a block of code multiple times.
+
+### For Loop
+
+The `for` loop is used to execute a block of code a specified number of times.
+
+```java
+for (int i = 0; i < 5; i++) {
+    // code block
+}
+```
+
+### While Loop
+
+The `while` loop is used to execute a block of code as long as a condition is true.
+
+```java
+while (condition) {
+    // code block
+}
+```
+
+### Do-While Loop
+
+The `do-while` loop is used to execute a block of code at least once, and then repeatedly execute it as long as a condition is true.
+
+```java
+do {
+    // code block
+} while (condition);
+```
+
+## Break, Continue and Return Statements
+
+The `break` statement is used to exit a loop or switch statement.
+
+```java
+for (int i = 0; i < 5; i++) {
+    if (i == 3) {
+        break;
+    }
+}
+```
+
+The `continue` statement is used to skip the rest of the code in a loop and continue with the next iteration.
+
+```java
+for (int i = 0; i < 5; i++) {
+    if (i == 3) {
+        continue;
+    }
+}
+```
+The `return` statement is used to exit a function and return a value.
+
+```java
+public int add(int a, int b) {
+    return a + b;
+}
+```
