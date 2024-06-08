@@ -1,0 +1,128 @@
+---
+title: Introduction to Supervised Machine Learning
+---
+In this notebook, we will introduce the concept of supervised machine learning. We will cover the following topics:
+
+# Iris Detection
+
+This is a simple example of how to use the `iris` dataset to train a model to predict the species of iris flowers.
+
+
+ - What is supervised machine learning?
+ - Types of supervised machine learning
+ - The machine learning process
+
+ Let's get started!
+
+```python
+# Import the necessary libraries
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+```
+
+## What is supervised machine learning?
+
+Supervised machine learning is a type of machine learning where the model is trained on a labeled dataset. The model learns to map input data to the correct output based on the labeled examples in the training dataset. The goal of supervised machine learning is to learn a function that can predict the output for new, unseen data.
+
+Supervised machine learning is used in a wide range of applications, including image recognition, speech recognition, natural language processing, and many others.
+
+```python
+# Load the iris dataset
+iris = load_iris()
+data = pd.DataFrame(data=iris.data, columns=iris.feature_names)
+```
+
+## Types of supervised machine learning
+
+There are two main types of supervised machine learning: classification and regression.
+
+### Classification
+
+Classification is a type of supervised machine learning where the goal is to predict the category or class of the input data. The output variable is a discrete value, such as a label or category.
+
+In classification, the model learns to map input data to a discrete output category based on the labeled examples in the training dataset.
+
+```python
+# Add the target variable to the dataframe
+data['species'] = iris.target
+data['species'] = data['species'].map({0: 'setosa', 1: 'versicolor', 2: 'virginica'})
+```
+
+### Regression
+
+Regression is a type of supervised machine learning where the goal is to predict a continuous value based on the input data. The output variable is a continuous value, such as a number or a range of numbers.
+
+In regression, the model learns to map input data to a continuous output value based on the labeled examples in the training dataset.
+
+```python
+# Split the data into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(data.drop('species', axis=1), data['species'], test_size=0.2, random_state=42)
+```
+
+## The machine learning process
+
+The machine learning process consists of the following steps:
+
+1. Data preprocessing: The first step in the machine learning process is to preprocess the data. This may involve cleaning the data, handling missing values, encoding categorical variables, and scaling the features.
+2. Splitting the data: The next step is to split the data into a training set and a test set. The training set is used to train the model, while the test set is used to evaluate the model's performance on unseen data.
+3. Training the model: The next step is to train the model on the training set. The model learns to map input data to the correct output by observing examples of input-output pairs.
+4. Evaluating the model: Once the model has been trained, it is evaluated on the test set to measure its performance. The evaluation metrics used will depend on the type of machine learning problem (e.g., regression or classification).
+5. Making predictions: Finally, the trained model can be used to make predictions on new, unseen data.
+6. Model tuning: The model can be further tuned by adjusting hyperparameters, feature selection, or other techniques to improve its performance.
+7. Deployment: Once the model has been trained and evaluated, it can be deployed in a production environment to make predictions on new data.
+8. Monitoring: The model should be monitored over time to ensure that it continues to perform well and to detect any issues that may arise.
+9. Retraining: The model may need to be retrained periodically on new data to ensure that it continues to perform well.
+10. Interpretation: Finally, the model should be interpreted to understand how it is making predictions and to gain insights from the data.
+11. Visualization: Visualization of the model's performance and predictions can help to understand the model's behavior and communicate the results to stakeholders.
+12. Reporting: Reporting the results of the machine learning model and its performance is important for communicating the findings to stakeholders and decision-makers.
+13. Iteration: The machine learning process is iterative, and the model may need to be refined and improved over time to achieve better performance.
+
+```python
+# Visualize the data
+sns.pairplot(data, hue='species')
+plt.show()
+```
+
+## Model training and evaluation
+
+Now that we have preprocessed the data and split it into training and test sets, we can train a model on the training set and evaluate its performance on the test set.
+
+```python
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+
+## Train a logistic regression model
+model = LogisticRegression()
+model.fit(X_train, y_train)
+model.score(X_test, y_test)
+```
+
+## Conclusion
+
+
+```python
+# Make predictions on the test set
+y_pred = model.predict(X_test)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+print(f'Accuracy: {accuracy:.2f}')
+
+# Visualize the predictions
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x=X_test['sepal length (cm)'], y=X_test['sepal width (cm)'], hue=y_pred, palette='viridis')
+plt.xlabel('Sepal Length (cm)')
+plt.ylabel('Sepal Width (cm)')
+plt.title('Iris Species Prediction')
+plt.show()
+```
+
+
+
+In this notebook, we introduced the concept of supervised machine learning and covered the types of supervised machine learning, the machine learning process, and the iris detection example. We also discussed the steps involved in the machine learning process and how to visualize the data.
+
+I hope you found this notebook helpful! If you have any questions or feedback, please feel free to reach out. Thank you for reading!

@@ -14,11 +14,6 @@ export default {
       </span>
         )
     },
-    editLink: {
-        text: '',
-        component: 'Edit this page on GitHub',
-        useLink: () => 'https://github.com/your-repo/edit/master/path/to/file',
-    },
     
     banner: {
         key: '1.0-release',
