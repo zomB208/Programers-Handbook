@@ -1,0 +1,179 @@
+---
+title: Python Basics
+---
+
+import { Callout, Cards, Card } from 'nextra/components';
+
+# Python Basics
+
+## Introduction
+
+Python is a high-level, interpreted, interactive and object-oriented scripting language. Python is designed to be highly readable. It uses English keywords frequently where as other languages use punctuation, and it has fewer syntactical constructions than other languages.
+
+Python is a MUST for students and working professionals to become a great Software Engineer specially when they are working in Web Development Domain. I will list down some of the key advantages of learning Python:
+
+## Hello World
+
+The first program that every programmer writes is called "Hello World". It's a simple program that prints `Hello, World!` to the screen. Here's how you can do this in Python:
+
+```python
+print("Hello, World!")
+```
+```cli
+Hello, World!
+```
+
+## Python Indentation
+
+Python uses indentation for blocks, instead of curly braces. Both tabs and spaces are supported, but the standard indentation requires standard Python code to use four spaces. For example:
+
+```python
+if 5 > 2:
+    print("Five is greater than two!")
+```
+
+## Python Syntax
+
+python is a non-strict language, which means that you don't have to declare the type of a variable when you create one. Python automatically assigns the data type according to the value you assign. For example:
+
+<Callout emoji="📝">
+    <p>Python is a case-sensitive language. This means, <b>Variable</b> and <b>variable</b> are not the same.</p>
+</Callout>
+
+```python
+x = 5
+y = "Hello, World!"
+z = 5.0
+a = True
+b = []
+```
+
+## Python Variables
+
+Variables are containers for storing data values. Python has no command for declaring a variable. There are 2 types of variables in Python:
+
+- **Local Variables**: A variable declared inside a function is known as a local variable.
+- **Global Variables**: A variable declared outside a function is known as a global variable.
+
+In python, you don't have to declare the type of variable, it can be declared with or without assigning a value. For example:
+
+```python
+x = 5
+y = "Hello, World!"
+```
+
+### Global Variables
+
+Global variables are the one that are defined and declared outside a function and we need to use them inside a function. For example:
+
+```python
+x = "awesome"
+
+def myfunc():
+    print("Python is " + x) # x is a global variable
+
+myfunc()
+```
+```cli
+Python is awesome
+```
+
+### Local Variables
+
+A variable declared inside a function is known as a local variable. A local variable can only be used inside a function where it is declared. For example:
+
+```python
+def myfunc():
+    y = "fantastic"
+    print("Python is " + y) # y is a local variable
+
+myfunc()
+```
+```cli
+Python is fantastic
+```
+<Callout emoji="📝">
+    <p>Python is a case-sensitive language. This means, <code>Variable</code> and <code>variable</code> are not the same.</p>
+</Callout>
+
+
+### Rule of Thumb
+
+- A variable name must start with a letter or the underscore character.
+- A variable name cannot start with a number.
+- A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ ).
+- Variable names are case-sensitive (age, Age and AGE are three different variables).
+
+### Tips & Tricks
+
+- You can assign multiple values to multiple variables in one line. For example:
+
+```python
+x, y, z = "Orange", "Banana", "Cherry"
+print(x)
+print(y)
+print(z)
+```
+```cli
+Orange
+Banana
+Cherry
+```
+
+- You can assign the same value to multiple variables in one line. For example:
+
+```python
+x = y = z = "Orange"
+print(x)
+print(y)
+print(z)
+```
+```cli
+Orange
+Orange
+Orange
+```
+
+- When you are using a global variable inside a function, you can use the `global` keyword to make the variable global. For example:
+
+```python
+x = "awesome"
+
+def myfunc():
+    global x
+    x = "fantastic"
+
+def Main():
+    print("Python is " + x)
+    myfunc()
+    print("Python is " + x)
+```
+```cli
+Python is awesome
+Python is fantastic
+```
+
+- When you are using a global variable inside a function, I recommend you to assign the value to a local variable and use it. For example:
+
+```python
+x = "awesome"
+
+def myfunc():
+    y = x
+    y = "fantastic"
+    print("Python is " + y)
+
+def Main():
+    print("Python is " + x)
+    myfunc()
+    print("Python is " + x)
+```
+```cli
+Python is awesome
+Python is fantastic
+Python is awesome
+```
+<Callout emoji="📝">
+    <p>This is beacuse, python fill first look for a local varable inside a function, and look i thr global avroable, asigning it to a local varable akes yout code eficient</p>
+</Callout>
+
