@@ -1,0 +1,127 @@
+---
+title: Control Flow Statements
+---
+
+# Control Flow Statements
+
+Control flow statements are used to control the flow of execution in a program. They allow you to make decisions, repeat actions, and break out of loops based on certain conditions. In this tutorial, we'll cover the following control flow statements in Python:
+
+- **Conditional Statements**: `if`, `elif`, and `else` statements
+- **Looping Statements**: `for` and `while` loops
+- **Control Statements**: `break`, `continue`, and `pass` statements
+
+Let's dive into each of these control flow statements and see how they work in Python.
+
+## Conditional Statements
+
+Conditional statements are used to execute different blocks of code based on certain conditions. In Python, we have the following conditional statements:
+
+- **`if` statement**: Executes a block of code if a specified condition is `True`.
+- **`elif` statement**: Executes a block of code if the preceding `if` or `elif` condition(s) are `False` and the current condition is `True`.
+- **`else` statement**: Executes a block of code if all preceding `if` and `elif` conditions are `False`.
+
+Here's an example of using conditional statements in Python:
+
+```python
+x = 10
+
+if x > 0:
+    print("x is positive")
+elif x < 0:
+    print("x is negative")
+else:
+    print("x is zero")
+```
+
+```cli
+x is positive
+```
+
+In the example above, the `if` statement checks if `x` is greater than `0`. If the condition is `True`, it prints `"x is positive"`. If the condition is `False`, it moves to the `elif` statement and checks if `x` is less than `0`. If the condition is `True`, it prints `"x is negative"`. If both conditions are `False`, it executes the `else` statement and prints `"x is zero"`.
+
+## Looping Statements
+
+Looping statements are used to repeat a block of code multiple times. In Python, we have the following looping statements:
+
+- **`for` loop**: Executes a block of code for each item in a sequence (e.g., a list, tuple, or string).
+- **`while` loop**: Executes a block of code as long as a specified condition is `True`.
+
+Here's an example of using looping statements in Python:
+
+### For Loop
+```python
+fruits = ["apple", "banana", "cherry"]
+
+for fruit in fruits:
+    print(fruit)
+```
+
+```cli
+apple
+banana
+cherry
+```
+
+### While Loop
+```python
+i = 0
+
+while i < 5:
+    print(i)
+    i += 1
+```
+
+```cli
+0
+1
+2
+3
+4
+```
+
+
+In the example above, the `for` loop iterates over each item in the `fruits` list and prints the item.
+
+## Control Statements
+
+Control statements are used to alter the flow of execution in a program. In Python, we have the following control statements:
+
+- **`break` statement**: Terminates the loop it is in and transfers control to the statement immediately following the loop.
+- **`continue` statement**: Skips the rest of the code inside a loop for the current iteration and moves to the next iteration.
+- **`pass` statement**: Does nothing and acts as a placeholder when a statement is required syntactically but you don't want any code to execute.
+
+Here's an example of using control statements in Python:
+
+```python
+for i in range(5):
+    if i == 3:
+        break
+    elif i == 1:
+        continue
+    else:
+        pass
+    print(i)
+```
+
+```cli
+0
+2
+```
+
+In the example above, the `for` loop iterates over the numbers `0` to `4`. When `i` is `3`, the `break` statement terminates the loop. When `i` is `1`, the `continue` statement skips the rest of the code inside the loop for that iteration. The `pass` statement does nothing and allows the loop to continue executing.
+
+## Conclusion
+
+Control flow statements are essential for writing dynamic and flexible programs in Python. By using conditional statements, looping statements, and control statements, you can create programs that respond to different conditions, repeat actions, and control the flow of execution. Practice using these control flow statements in your Python programs to become more proficient in programming. Happy coding!
+
+
+
+## Resources
+
+- [Python Documentation: Control Flow Statements](https://docs.python.org/3/tutorial/controlflow.html)
+- [Real Python: Python Control Flow Statements](https://realpython.com/python-conditional-statements/)
+- [Programiz: Python if...elif...else Statement](https://www.programiz.com/python-programming/if-elif-else)
+- [Programiz: Python for Loop](https://www.programiz.com/python-programming/for-loop)
+- [Programiz: Python while Loop](https://www.programiz.com/python-programming/while-loop)
+- [Programiz: Python break, continue, and pass Statements](https://www.programiz.com/python-programming/break-continue-pass)
+- [W3Schools: Python Control Flow](https://www.w3schools.com/python/python_conditions.asp)
