@@ -271,3 +271,180 @@ PC $ java Main
 Dog barks
 ```
 
+## Association
+
+Association is a relationship between two classes. It describes how objects are related to each other and how they interact with each other.
+
+```java
+class Car {
+  private String model;
+  public Car(String model) {
+    this.model = model;
+  }
+  public String getModel() {
+    return model;
+  }
+}
+
+class Person {
+  private String name;
+  private Car car;
+  public Person(String name, Car car) {
+    this.name = name;
+    this.car = car;
+  }
+  public String getName() {
+    return name;
+  }
+  public Car getCar() {
+    return car;
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Car myCar = new Car("Mustang");
+    Person myPerson = new Person("John", myCar);
+    System.out.println(myPerson.getName() + " has a " + myPerson.getCar().getModel());
+  }
+}
+```
+```sh
+PC $ java Main
+
+John has a Mustang
+```
+
+## Aggregation
+
+Aggregation is a special form of association where an object is composed of one or more other objects. It represents a "has-a" relationship between objects.
+
+```java
+class Address {
+  String city, state, country;
+  public Address(String city, String state, String country) {
+    this.city = city;
+    this.state = state;
+    this.country = country;
+  }
+}
+
+class Employee {
+  int id;
+  String name;
+  Address address;
+  public Employee(int id, String name, Address address) {
+    this.id = id;
+    this.name = name;
+    this.address = address;
+  }
+  void display() {
+    System.out.println(id + " " + name);
+    System.out.println(address.city + " " + address.state + " " + address.country);
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Address address1 = new Address("Gurgaon", "Haryana", "India");
+    Address address2 = new Address("Delhi", "Delhi", "India");
+
+    Employee e = new Employee(101, "John", address1);
+    Employee e2 = new Employee(102, "David", address2);
+
+    e.display();
+    e2.display();
+  }
+}
+```
+```sh
+PC $ java Main
+
+101 John
+Gurgaon Haryana India
+102 David
+Delhi Delhi India
+```
+
+## Composition
+
+Composition is a stronger form of aggregation where an object is composed of one or more other objects, and the composed objects cannot exist independently of the container object. It represents a "part-of" relationship between objects.
+
+```java
+class Address {
+  String city, state, country;
+  public Address(String city, String state, String country) {
+    this.city = city;
+    this.state = state;
+    this.country = country;
+  }
+}
+
+class Employee {
+  int id;
+  String name;
+  Address address;
+  public Employee(int id, String name, Address address) {
+    this.id = id;
+    this.name = name;
+    this.address = address;
+  }
+  void display() {
+    System.out.println(id + " " + name);
+    System.out.println(address.city + " " + address.state + " " + address.country);
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Address address = new Address("Gurgaon", "Haryana", "India");
+    Employee e = new Employee(101, "John", address);
+    e.display();
+  }
+}
+```
+```sh
+PC $ java Main
+
+101 John
+Gurgaon Haryana India
+```
+
+## Dependency
+
+Dependency is a relationship between two classes where one class depends on another class. It occurs when a class uses another class as a parameter or local variable.
+
+```java
+class Engine {
+  void start() {
+    System.out.println("Engine started");
+  }
+}
+
+class Car {
+  Engine engine; // Car "has-a" Engine
+  Car(Engine engine) {
+    this.engine = engine;
+  }
+  void start() {
+    engine.start();
+    System.out.println("Car started");
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Engine engine = new Engine();
+    Car car = new Car(engine);
+    car.start();
+  }
+}
+```
+```sh
+PC $ java Main
+
+Engine started
+Car started
+```
+
+These are some of the key concepts of Object-Oriented Programming (OOP) that are used in Java to design and develop software applications. By utilizing these concepts, developers can create modular, extensible, and maintainable software applications that are easy to understand, modify, and scale.

@@ -2,9 +2,9 @@
   "IntroductionToProgramming" : "Introduction to Java Programming",
   "JavaBasics" : "Java Basics",
   "ControlFlowStatements" : "Control Flow Statements",
-  "Object OrientedProgrammingConcepts":"OPS - Concept",
-  "OOPS Usecase": "OPS - UseCase",
-  "JavaCollectionsFramework" : "Java Collections Framework",
+  "OOPS-concept":"OOPS - Concept",
+  "OOPSUsecase": "OOPS - UseCase",
+  "JavaCollectionsFramework" : "JCF - Collections",
   "ExceptionHandling" : "Exception Handling",
   "JavaCore": "Check Point #01"
 }

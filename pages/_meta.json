@@ -1,7 +1,10 @@
 {
   "index": "Getting Started",
-  "Non-FRC": "Non-FRC",
-  "FRC-Guide": "FRC-Guide",
-  "IntrotoML": "Intro to ML",
-  "IntrotoPython": "Intro to Python"
+  "FRC-Guide": "FRC Guide",
+
+
+
+  "Intro_To_Java": "Introduction to Java",
+  "Intro_To_Python": "Introduction to Python",
+  "Intro_To_Machine_Learning": "Introduction to Machine Learning"
 }

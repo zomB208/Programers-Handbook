@@ -1,0 +1,85 @@
+---
+title" Exception Handling in Java
+---
+
+# Exception Handling in Java
+
+Exception Handling is a mechanism to handle runtime errors. It is mainly used to handle checked exceptions. If there is any exception at runtime, the program terminates abruptly and the rest of the code is not executed. So, it is always a good practice to handle exceptions.
+
+## Types of Exceptions
+
+There are two types of exceptions in Java:
+
+1. Checked Exception
+2. Unchecked Exception
+
+### Checked Exception
+
+Checked exceptions are checked at compile-time. If some code within a method throws a checked exception, then the method must either handle the exception or it must specify the exception using throws keyword.
+
+### Unchecked Exception
+
+Unchecked exceptions are not checked at compile-time, but they are checked at runtime. If an unchecked exception occurs in the code, the program terminates abruptly.
+
+## Exception Handling Keywords
+
+There are 5 keywords used in exception handling:
+
+1. try
+2. catch
+3. finally
+4. throw
+5. throws
+
+### try
+
+The try block is used to enclose the code that might throw an exception. It must be followed by either catch or finally block.
+
+### catch
+
+The catch block is used to handle the exception. It must be preceded by try block.
+ g
+### finally
+
+The finally block is used to execute the important code of the program. It is executed whether an exception is handled or not.
+
+### throw
+
+The throw keyword is used to throw an exception explicitly.
+
+### throws
+
+The throws keyword is used to declare an exception. It doesn't handle the exception, it just specifies the exception that might occur in the method.
+
+## Example
+
+```java
+public class ExceptionHandling {
+    public static void main(String[] args) {
+        try {
+            int a = 10 / 0; // ArithmeticException
+        } catch (ArithmeticException e) {
+            System.out.println("Arithmetic Exception: " + e);
+        } finally {
+            System.out.println("Finally block is always executed");
+        }
+    }
+}
+```
+```cli
+Arithmetic Exception: java.lang.ArithmeticException: / by zero
+Finally block is always executed
+```
+
+In the above example, the code inside the try block throws an ArithmeticException. The catch block catches the exception and prints the message. The finally block is always executed whether an exception is handled or not.
+
+## Conclusion
+
+Exception Handling is a mechanism to handle runtime errors. It is mainly used to handle checked exceptions. There are two types of exceptions in Java: Checked Exception and Unchecked Exception. There are 5 keywords used in exception handling: try, catch, finally, throw, and throws.
+
+
+
+
+
+
+

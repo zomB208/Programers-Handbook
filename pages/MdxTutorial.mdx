@@ -1,0 +1,193 @@
+---
+title: MDX Tutorial
+---
+
+import { Callout } from 'nextra/components';
+
+## MDX Tutorial
+
+MDX is a markdown format that allows you to import components and other markdown files into your markdown file. This allows you to create a more modular and reusable markdown file.
+
+### Importing Components
+
+To import a component, you can use the following syntax:
+
+```md
+import { ComponentName } from 'nextra/components';
+```
+
+For example, to import a `Callout` component, you can use the following syntax:
+
+```md
+import { Callout } from 'nextra/components';
+```
+
+### Using Imported Components
+
+Once you have imported a component, you can use it in your markdown file like this:
+
+```md
+<Callout emoji="👾">
+    This is a callout component.
+</Callout>
+```
+<Callout emoji="👾">
+    This is a callout component.
+</Callout>
+
+## Common Components
+
+Here are some common components that you can import and use in your markdown files:
+
+"#" is used to create a heading. The number of "#"s determines the level of the heading.
+
+# Heading 1
+```
+# Heading 1
+```
+## Heading 2
+```
+## Heading 2
+```
+### Heading 3
+```
+### Heading 3
+```
+#### Heading 4
+```
+#### Heading 4
+```
+##### Heading 5
+```
+##### Heading 5
+```
+###### Heading 6
+```
+###### Heading 6
+```
+
+# Bullet Points
+
+You can create bullet points using the following syntax:
+
+```md
+- Item 1
+- Item 2
+- Item 3
+```
+- Item 1
+- Item 2
+- Item 3
+
+# Numbered Lists
+
+You can create numbered lists using the following syntax:
+
+```md
+1. Item 1
+2. Item 2
+3. Item 3
+```
+1. Item 1
+2. Item 2
+3. Item 3
+
+# Links
+
+You can create links using the following syntax:
+
+```md
+[Link Text](https://www.example.com)
+```
+[Link Text](https://www.example.com)
+
+# Images
+
+You can add images using the following syntax:
+
+```md
+![Alt Text](https://www.example.com/image.jpg)
+```
+![Alt Text](https://www.example.com/image.jpg)
+
+# Code Blocks
+
+You can create code blocks using the following syntax:
+
+```md
+```javascript
+console.log('Hello, World!'); //Make sure u close it with 3 ( ` ) backticks
+```
+
+
+```javascript
+console.log('Hello, World!');
+```
+
+
+# Tables
+
+You can create tables using the following syntax:
+
+```md
+| Header 1 | Header 2 | Header 3 |
+|----------|----------|----------|
+| Row 1    | Row 1    | Row 1    |
+| Row 2    | Row 2    | Row 2    |
+| Row 3    | Row 3    | Row 3    |
+```
+
+| Header 1 | Header 2 | Header 3 |
+|----------|----------|----------|
+| Row 1    | Row 1    | Row 1    |
+| Row 2    | Row 2    | Row 2    |
+| Row 3    | Row 3    | Row 3    |
+
+# Dividers
+
+You can create dividers using the following syntax:
+
+```md
+---
+```
+
+---
+
+# Importing Other Markdown Files
+
+You can import other markdown files into your markdown file using the following syntax:
+
+```md
+[]: # Path: path/to/file.mdx
+```
+
+
+# Comparing Snippets
+
+Here is a snippet from a markdown file that uses the `Callout` component:
+
+```md
+[]: # Path: pages/FRC-Guide/InstallingNi.mdx
+---
+title: FRC Game Tools Installation
+---
+import { Callout } from 'nextra/components'
+
+## Installing the FRC Game Tools
+
+<Callout emoji="👾">
+    **Note:** No components from the LabVIEW Software for FRC package are required for running either the Driver Station or Imaging Tool.
+</Callout>
+
+```
+
+Here is a snippet from a markdown file that uses the `Cards` and `Card` components:
+
+```md
+[]: # Path: pages/FRC-Guide/Tools%26Setup.mdx
+---
+title: Tools and Setup
+---
+import { Cards, Card } from 'nextra/components';
+
+### Tools and Setup
