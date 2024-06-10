@@ -1,0 +1,144 @@
+---
+title: IntrotoHTML
+---
+
+import { Cards, Card } from 'nextra/components'
+import { Callout } from 'nextra/components'
+
+# Intro to HTML
+HTML (Hypertext Markup Language) is a coding language for Front-End Web Development that can be used to create websites, forms, and other types of web pages.
+There are many components to HTML that are pivotal to create an amazing webpage!
+
+**Side Note**: For the Intro to Web Design Pages, we reccomend that you read each in **this order**:
+1. Intro to HTML
+2. Intro to CSS
+3. Intro to JS
+Similar to a series!
+
+## Elements
+Elements are the core part of HTML that are used to create the content of your webpage. Most elements begin with a **< >** opening tag and a **</ >** closing tag. There are some exeptions, which you should be careful of. In most cases, they will have a **< />** or **< >** tag. These tags are important to be able to wrap the text you want to put on your webpage.
+
+There are many important elements that are responsible for creating your webpage. For now, let's look at some of the most common elements for the **<body>** of the page:
+
+- The **<h1>** element is used to create the largest text on your webpage, such as a Title at the top. There are 6 different variations, from **<h1>** down to **<h6>**, but **<h1>** and **<h2>** are the most common.
+- The **<p>** element is used to create the normal text and paragraphs for your webpage. Think of it as the **body text** that you would normally use to write out your content and information.
+- The **<img>*** element is used to implement images into your webpage by making its **src** attribute equal to the image address.
+
+<Callout type={"info"} emoji={"💡"}>Learn about what **Attributes** by scrolling down to after the **A Fresh Start** section.</Callout>
+
+- The **<ul>** element is an "unordered list" element that you put your list (**<li>**) elements in to create a bulleted list.
+- The **<ol>** element is an "ordered list" element that you put your list (**<li>**) elements in to create a numbered list.
+- The **<li>**element is a "list" element, creating a list of your content in different ways depending on the element it is nested in (**<ol>** or **<ul>**).
+- The **<a>** element is used within other elements around specific text, which links it to another part of your webpage or site.
+- The **<footer>** element creates a footer at the bottom of your webpage to add any additional useful information.
+
+## A Fresh Start
+Before writing the content of your webpage, there is a "skeleton" that you need to create in order for your code to function.
+
+```HTML
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+  <main>
+  </main>
+</body>
+</html>
+```
+
+- The **<!DOCTYPE html>** declaration defines the document to be in the HTML language.
+- The **<html>** element is the element that contains all of the code for your page, excluding the declaration stated above ^^.
+- The **<head>** element contains important information about the webpage such as the title that is displayed on its open tab, encoding information, and scaling to fit different devices' widths and lengths.
+- The **<meta>** element is used to store scaling and encoding info, which is important for your webpage.
+- The **<title>** element is where you put the title of your webpage to be displayed on its tab bar when opened.
+- The **<link>** element is used to link your HTML file to your CSS (Cascading Style Sheets) file, which will be used to add some design and styling to your page. We will get to that later.
+- The **<body>** element is where you will write the content code for your webpage.
+- The **<main>** element is where the code for the main part of your webpage will go (Not the header or footer, but the body in between)
+- The **<script>** element is used to link your HTML file to a JavaScript (JS) file, which will give your webpage interactivity by controlling specific elements. We will get to more of that later.
+
+<Callout type={"info"} emoji={"💡"}>Learn more about CSS and JS in the "Intro to CSS" and "Intro to JS" pages respectively.</Callout>
+
+## Attributes
+
+```HTML
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+  <h1 class="page-title">My Project</h1>
+  <p class="description">This is my project</p>
+  <script src="script.js"></script>
+</body>
+</html>
+```
+
+As seen in the example above, many of the elements had **attributes** that provided specific values to add features to your code (highlighted in light blue). These are essential to create a webpage efficiently and have the best results.
+
+Some attributes, like the **class** attribute, give a description for the element that they are being used by that can be used for programmers to read through code easier and make appropriate changes, but also to easily target specific parts of their code with CSS for styling purposes.
+
+Other attributes, like the **lang** or **alt** attribute, are used to provide the webpage important information that will help with formatting and/or SEO (Search Engine Optimization).
+
+## Conclusion
+
+To summarize, below is example code for a webpage using all of the previously mentioned information from this page:
+
+## Example Code:
+
+```HTML
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#cat-image">Image of Cat</a></li>
+        <li><a href="#reasons">Why I Like Cats</a></li>
+      </ul>
+    </nav>
+    <h1 class="page-title">My Project</h1>
+  </header>
+  <p class="description">This is my project</p>
+  <img class="cat-image" id="cat-image" src="https://smb.ibsrv.net/imageresizer/image/article_manager/1200x1200/20586/516506/heroimage0.327162001643150501.jpg">
+  <p class="description">This is a kitten, I will name him Cookie.</p>
+  <p>Cats are one of my <i>favorite</i> animals!</p>
+  <p>This is because they are:</p>
+  <ul id="reasons">
+    <li class="list">Funny</li>
+    <li class="list">Clever</li>
+    <li class="list">Energetic</li>
+    <li class="list">Fluffy</li>
+  </ul>
+  <p class="description" id="final">And so much more!</p>
+  <script src="script.js"></script>
+  <footer>
+    <p>- Created by a fellow programmer</p>
+  </footer>
+</body>
+</html>
+```
+
+Here is what the code above would create:
+
+[HTML Webpage](https://b02490e8-84e6-474c-bbe5-56ac045c3658-00-833t1dcm4cf8.picard.replit.dev/)
+
+This webpage doesn't seem to have much styling or design to it. With CSS and JS, this webpage will become much more visually appealing and easier to navigate!
+
+Happy Coding!
+
+<Callout type={"info"} emoji={"💡"}>Look into CSS next with our **Intro to CSS** page!</Callout>
