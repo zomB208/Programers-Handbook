@@ -2,9 +2,9 @@
   "IntroductionToProgramming" : "Introduction to Python Programming",
   "PythonBasics" : "Python Basics",
   "ControlFlowStatements" : "Control Flow Statements",
-  "ObjectOrientedProgrammingConcepts":"OOPS - Concept",
+  "OOPS-concept":"OOPS - Concept",
   "OOPSUsecase": "OOPS - UseCase",
-  "JavaCollectionsFramework" : "Java Collections Framework",
+  "Collections": "Collections",
   "ExceptionHandling" : "Exception Handling",
-  "JavaCore": "Check Point #01"
+  "PythonCore": "Check Point #01"
 }

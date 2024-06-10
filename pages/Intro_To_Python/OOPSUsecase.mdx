@@ -1,0 +1,89 @@
+---
+title: Use of OOP in Python
+---
+
+# Use of OOP in Python
+
+## Classes and Objects
+
+Python is an object-oriented programming language. Everything in Python is associated with classes and objects, along with its attributes and methods. For example: in real life, a car is an object. The car has attributes, such as weight and color, and methods, such as drive and brake.
+
+A Class is like an object constructor, or a "blueprint" for creating objects.
+```python
+class Car: # class definition
+  def __init__(self, modelYear, modelName):
+    self.modelYear = modelYear
+    self.modelName = modelName
+```
+
+An object is created from a class. We can create many objects from a class. An object is also called an instance of a class.
+
+```python
+myCar = Car(1969, "Mustang") # create an object of Car
+print(myCar.modelYear, myCar.modelName) # output the value of the modelYear and modelName attributes
+```
+```sh
+PC $ python main.py
+
+1969 Mustang
+```
+
+## Encapsulation
+
+Encapsulation in Python is a mechanism of wrapping the data (variables) and code acting on the data (methods) together as a single unit.
+
+In encapsulation, the variables of a class will be hidden from other classes, and can be accessed only through the methods of their current class. Therefore, it is also known as data hiding.
+
+There are 3 access modifiers in Python:
+- private: The code is only accessible within the declared class.
+- public: The code is accessible from all classes.
+- protected: The code is accessible in the same package and subclasses.
+
+### Private Variables
+
+```python
+class Person:
+  def __init__(self):
+    self.__name = "John" # private variable
+
+myObj = Person()
+print(myObj.__name) # error
+```
+```sh
+$ python main.py
+Traceback (most recent call last):
+  File "main.py", line 6    , in <module>
+    print(myObj.__name) # error
+AttributeError: 'Person' object has no attribute '__name'
+```
+
+### Public Variables
+
+```python
+class Person:
+  def __init__(self):
+    self.name = "John" # public variable
+
+myObj = Person()
+print(myObj.name) # John
+```
+```sh
+$ python main.py
+John
+```
+
+
+### Protected Variables
+
+```python
+class Person:
+  def __init__(self):
+    self._name = "John" # protected variable
+
+myObj = Person()
+print(myObj._name) # John
+```
+```sh
+$ python main.py
+John
+```

@@ -1,0 +1,73 @@
+---
+title: Exception Handling in Python
+---
+
+# Exception Handling in Python
+
+## What is an Exception?
+
+An exception is an event that occurs during the execution of a program that disrupts the normal flow of instructions. When an error occurs, Python generates an exception that can be handled, which avoids the program from crashing.
+
+## Types of Exceptions
+
+There are two types of exceptions in Python:
+
+1. **Syntax Error**: These errors occur when the parser detects a syntax error. For example, if you forget to close a bracket or misspell a keyword, Python will raise a syntax error.
+
+2. **Exceptions**: These errors occur during the execution of the program. For example, if you try to divide a number by zero, Python will raise an exception.
+
+## Handling Exceptions
+
+To handle exceptions in Python, you can use the `try`, `except`, and `finally` blocks. The `try` block contains the code that might raise an exception, and the `except` block contains the code that handles the exception. The `finally` block contains the code that will be executed regardless of whether an exception is raised or not.
+
+```python
+try:
+  # code that might raise an exception
+  x = 10 / 0
+except ZeroDivisionError:
+  # code that handles the exception
+  print("Cannot divide by zero!")
+finally:
+  # code that will be executed regardless of whether an exception is raised or not
+  print("The program has ended.")
+```
+
+```sh
+$ python main.py
+
+Cannot divide by zero!
+The program has ended.
+```
+
+## Raising Exceptions
+
+You can raise exceptions in Python using the `raise` statement. This allows you to create custom exceptions and handle them in your code.
+
+```python
+x = -1
+
+if x < 0:
+  raise Exception("Number cannot be negative!")
+```
+
+```sh
+$ python main.py
+
+Traceback (most recent call last):
+  File "main.py", line 4, in <module>
+    raise Exception("Number cannot be negative!")
+Exception: Number cannot be negative!
+```
+
+## Conclusion
+
+In this guide, you learned about exception handling in Python. You learned about the different types of exceptions, how to handle exceptions using the `try`, `except`, and `finally` blocks, and how to raise exceptions using the `raise` statement. Exception handling is an essential concept in Python programming that allows you to handle errors gracefully and prevent your program from crashing.
+
+## References
+
+- [Python Documentation: Errors and Exceptions](https://docs.python.org/3/tutorial/errors.html)
+- [Real Python: Python Exceptions: An Introduction](https://realpython.com/python-exceptions/)
+- [W3Schools: Python Exceptions](https://www.w3schools.com/python/python_exceptions.asp)
+- [GeeksforGeeks: Python Exception Handling](https://www.geeksforgeeks.org/python-set-3-exception-handling/)
+- [Programiz: Python Exception Handling](https://www.programiz.com/python-programming/exception-handling)
+- [Python Crash Course: Exceptions](https://ehmatthes.github.io/pcc/cheatsheets/README.html#exceptions)
