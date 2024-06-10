@@ -1,0 +1,65 @@
+---
+title=Arm
+---
+import {Callout} from 'nextra/components';
+
+# Arm
+
+### What can an arm do?
+
+An arm subsystem can accomplish many unique tasks, some of which include Climbing, Placing game pieces, and raising other subsystems.
+Arms commonly use Motors and encoders to rotate and keep track of rotation when in use.
+
+### Example Arm Code
+
+```java
+public class Arm extends SubsystemBase {
+
+  private final TalonFX armRotation; 
+  private final DutyCycleEncoder armRotationEncoder;
+
+  private final PIDController pid = ArmConstants.ArmPIDForExternalEncoder.GetArmPID();
+
+   public Arm() {
+    super();
+    
+    armRotation = new TalonFX(CANConstants.Arm.kArm);
+    armRotation.getConfigurator().apply(ArmConstants.GetArmMotorConfiguration());
+    armRotationEncoder = new DutyCycleEncoder(DIOConstants.Arm.kArmRotateEncoder);
+   }
+```
+
+This code creates an <u>Arm Motor</u>, <u>Arm Encoder</u>, and <u>PID Controller</u>.
+<Callout type={"info"} emoji={"💡"}> Learn more about PID control in the PID section. </Callout> 
+[//] # (TODO create PID page)
+
+### Setting Arm Limits 
+Arms usually have a limited range of motion when they are a part of a robot. However, the motor does not know this by default, and moving the arm further than its range would definitely break the robot or the arm. This can be combatted by setting an <u>Arm rotation limit</u>.
+### Example code 
+```java
+ public void rotateOrHold(double power) {
+    SmartDashboard.putNumber("power to the arm", power);
+    if(Math.abs(power) < ArmConstants.kHoldThreshold) { // if there is no power to the controller, hold
+      hold();
+    } else if(getArmAngle() < 5 && power < 0) { // if you are falling and the angle is less than 5, then dont move
+      setOutput(0);
+      setArmHoldActive(false);
+    } else if (getArmAngle() > 90 && power > 0) { // if you are rising and the angle is greater than 90, then hold 90
+      hold(90);
+    } else { // else move using the output from the controller
+      setOutput(power);
+      setArmHoldActive(false);
+    }
+  }
+```
+* The ```Hold``` function sets the PID setpoint to the given angle.
+```java
+ public void hold(double angle) {
+    if(!getArmHoldActive()) {
+      setArmHoldAngle(angle);
+      setArmHoldActive(true);
+      setPIDTarget(getArmHoldAngle());
+    }
+```
+* The passed in ```Angle``` is set as the Arm hold angle and is then set as the PID target for the arm.
+<Callout type={"info"} emoji={"💡"}> Look at all of the arm code from 201's 2024 robot [Here](https://github.com/feds201/2024stewie/blob/development-experimental/src/main/java/frc/robot/subsystems/arm/Arm.java) </Callout>
