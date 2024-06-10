@@ -6,5 +6,9 @@
   "OOPSUsecase": "OOPS - UseCase",
   "JavaCollectionsFramework" : "JCF - Collections",
   "ExceptionHandling" : "Exception Handling",
+  "JavaStandardLibraries" : "Java Standard Libraries",
+  "Multithreading" : "Basic Concepts of Multithreading",
+  "BestPractices" : "Best Practices",
   "JavaCore": "Check Point #01"
+
 }

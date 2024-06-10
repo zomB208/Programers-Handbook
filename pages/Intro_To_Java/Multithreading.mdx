@@ -1,0 +1,210 @@
+---
+title: Basic Multithreading in Java
+---
+
+# Basic Multithreading in Java
+
+Multithreading is a powerful feature of Java that allows you to run multiple threads concurrently within a single process. Each thread represents a separate flow of control within the program, allowing you to perform multiple tasks simultaneously. Multithreading is commonly used in Java to improve the performance and responsiveness of applications by taking advantage of modern multi-core processors.
+
+In this guide, we will explore the basics of multithreading in Java, including how to create and manage threads, synchronize access to shared resources, and communicate between threads.
+
+## Creating Threads
+
+In Java, you can create threads by extending the `Thread` class or implementing the `Runnable` interface. Here's an example of creating a thread by extending the `Thread` class:
+
+```java
+class MyThread extends Thread {
+    public void run() {
+        System.out.println("Hello from a thread!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyThread thread = new MyThread();
+        thread.start();
+    }
+}
+```
+
+```sh
+Hello from a thread!
+```
+
+In this example, we define a class `MyThread` that extends the `Thread` class and overrides the `run` method to define the code that the thread will execute. We then create an instance of `MyThread` and start the thread by calling the `start` method.
+
+Alternatively, you can create a thread by implementing the `Runnable` interface. Here's an example of creating a thread using the `Runnable` interface:
+
+```java
+class MyRunnable implements Runnable {
+    public void run() {
+        System.out.println("Hello from a runnable!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Thread thread = new Thread(new MyRunnable());
+        thread.start();
+    }
+}
+```
+
+```sh
+Hello from a runnable!
+```
+
+In this example, we define a class `MyRunnable` that implements the `Runnable` interface and provides an implementation for the `run` method. We then create a `Thread` instance and pass an instance of `MyRunnable` to its constructor. Finally, we start the thread by calling the `start` method.
+
+## Synchronization
+
+When multiple threads access shared resources concurrently, it's important to synchronize access to prevent data corruption when reading or writing shared data. In Java, you can use the `synchronized` keyword to create synchronized blocks of code that ensure only one thread can access the block at a time. Here's an example of using synchronization to protect a shared counter:
+
+```java
+// Class Counter represents a shared counter
+class Counter {
+    private int count = 0; // holds the count value
+
+    // synchronized method to increment the count
+    public synchronized void increment() {
+        count++;
+    }
+
+    // synchronized method to get the count
+    public synchronized int getCount() {
+        return count;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Counter counter = new Counter(); // create a new counter
+
+        // create a new thread that increments the counter 1000 times
+        Thread thread1 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                counter.increment();
+            }
+        });
+
+        // create another thread that increments the counter 1000 times
+        Thread thread2 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                counter.increment();
+            }
+        });
+
+        thread1.start(); // start the first thread
+        thread2.start(); // start the second thread
+
+        try {
+            thread1.join(); // wait for the first thread to finish
+            thread2.join(); // wait for the second thread to finish
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // print the final count value
+        System.out.println("Counter: " + counter.getCount());
+    }
+}
+```
+
+```sh
+Counter: 2000
+```
+
+In this example, we define a `Counter` class with `increment` and `getCount` methods that increment and return the counter value, respectively. We mark these methods as `synchronized` to ensure that only one thread can access them at a time. We then create two threads that increment the counter value concurrently, and we use the `join` method to wait for the threads to finish before printing the final counter value.
+
+## Communication Between Threads
+
+Threads can communicate with each other using methods such as `wait`, `notify`, and `notifyAll` provided by the `Object` class. These methods allow threads to coordinate their activities and synchronize access to shared resources. Here's an example of using `wait` and `notify` to implement a simple producer-consumer scenario:
+
+```java
+// Class Buffer represents a buffer for producer-consumer problem
+class Buffer {
+    private int data; // holds the data in the buffer
+    private boolean empty = true; // flag to check if the buffer is empty
+
+    // synchronized method to produce data into the buffer
+    public synchronized void produce(int value) {
+        // wait if the buffer is not empty
+        while (!empty) {
+            try {
+                wait(); // wait for the consumer to consume the data
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // produce data
+        data = value;
+        empty = false; // set the buffer as not empty
+        notify(); // notify the consumer that data has been produced
+    }
+
+    // synchronized method to consume data from the buffer
+    public synchronized int consume() {
+        // wait if the buffer is empty
+        while (empty) {
+            try {
+                wait(); // wait for the producer to produce the data
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // consume data
+        empty = true; // set the buffer as empty
+        notify(); // notify the producer that data has been consumed
+        return data; // return the consumed data
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Buffer buffer = new Buffer(); // create a new buffer
+
+        // create a new producer thread
+        Thread producer = new Thread(() -> {
+            for (int i = 0; i < 10; i++) {
+                buffer.produce(i); // produce data
+                System.out.println("Produced: " + i); // print the produced data
+            }
+        });
+
+        // create a new consumer thread
+        Thread consumer = new Thread(() -> {
+            for (int i = 0; i < 10; i++) {
+                int value = buffer.consume(); // consume data
+                System.out.println("Consumed: " + value); // print the consumed data
+            }
+        });
+
+        producer.start(); // start the producer thread
+        consumer.start(); // start the consumer thread
+
+        try {
+            producer.join(); // wait for the producer thread to finish
+            consumer.join(); // wait for the consumer thread to finish
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+```sh
+Produced: 0
+Consumed: 0
+Produced: 1
+Consumed: 1
+Produced: 2
+Consumed: 2
+Produced: 3
+Consumed: 3
+Produced: 4
+Consumed: 4
+...
+```
+
