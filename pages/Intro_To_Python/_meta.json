@@ -6,5 +6,8 @@
   "OOPSUsecase": "OOPS - UseCase",
   "Collections": "Collections",
   "ExceptionHandling" : "Exception Handling",
+  "Built-inLibraries" : "Python Standard Libraries",
+  "Multithreading" : "Basic Concepts of Multithreading",
+  "BestPractices" : "Best Practices",
   "PythonCore": "Check Point #01"
 }
