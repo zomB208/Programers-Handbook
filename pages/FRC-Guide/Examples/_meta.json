@@ -1,8 +1,8 @@
 {
   "Vision": "Vision",
   "PID": "PID",
-  "Rev Sensor": "Rev Sensor",
-  "CTR Pheonix": "CTR Phoenix",
+  "RevSensor": "Rev Sensor",
+  "CTRPheonix": "CTR Phoenix",
   "CAN": "CAN"
 
 }

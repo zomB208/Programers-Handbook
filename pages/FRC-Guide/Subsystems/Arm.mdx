@@ -2,6 +2,11 @@
 title=Arm
 ---
 import {Callout} from 'nextra/components';
+import Head from 'next/head';
+
+<Head>
+  <title>Arm</title>
+</Head>
 
 # Arm
 
@@ -29,10 +34,15 @@ public class Arm extends SubsystemBase {
    }
 ```
 
+
 * This code creates an <u>Arm Motor</u>, <u>Arm Encoder</u>, and <u>PID Controller</u>.
+
 * The TalonFX motor and DutyCycleEncoder both use ID's to differentiate themselves from other encoders / motors on a robot. In this case, the IDs are stored in seperate constants files.
+
 <Callout type={"info"} emoji={"💡"}> Learn more about PID control in the PID section. </Callout> 
+
 /* (TODO create PID page) */
+
 
 ### Setting Arm Limits 
 Arms usually have a limited range of motion when they are a part of a robot. However, the motor does not know this by default, and moving the arm further than its range would definitely break the robot or the arm. This can be combatted by setting an <u>Arm rotation limit</u>.
@@ -53,7 +63,7 @@ Arms usually have a limited range of motion when they are a part of a robot. How
     }
   }
 ```
-* The ```Hold``` function sets the PID setpoint to the given angle.
+* The `Hold` function sets the PID setpoint to the given angle.
 ```java
  public void hold(double angle) {
     if(!getArmHoldActive()) {
@@ -62,6 +72,7 @@ Arms usually have a limited range of motion when they are a part of a robot. How
       setPIDTarget(getArmHoldAngle());
     }
 ```
+
 * The passed in ```Double Angle``` is set as the Arm hold angle and is then set as the PID target for the arm.
 <Callout type={"info"} emoji={"💡"}> Look at all of the arm code from 201's 2024 robot [Here](https://github.com/feds201/2024stewie/blob/development-experimental/src/main/java/frc/robot/subsystems/arm/Arm.java) </Callout>
 
@@ -205,3 +216,9 @@ public void configureOperatorController{
 Now, our example arm code is all done. We created an <u>arm subsystem</u> to create a motor, encoder, PID controller, and functions for the arm. We made a <u>RotateArmToPosition</u> using the arm subsystem to move the arm to an angle. Then we bound the command to a button in <u>RobotContainer</u> and set the arm setpoint to 30 degrees. this is just one example of what can be done with an arm. Many more things are possible, so always make sure to explore your options when programming anything. Happy coding!
 
 * All example code was sampled from the FEDS 201 [Stewie Repository](https://github.com/feds201/2024stewie/tree/development-experimental).
+=======
+
+
+* The passed in `Angle` is set as the Arm hold angle and is then set as the PID target for the arm.
+
+<Callout type={"info"} emoji={"💡"}> Look at all of the arm code from 201's 2024 robot [Here](https://github.com/feds201/2024stewie/blob/development-experimental/src/main/java/frc/robot/subsystems/arm/Arm.java) </Callout>
