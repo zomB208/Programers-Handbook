@@ -1,7 +1,9 @@
 {
-  "SubsystemOverview": "Subsystem Overview",
-  "Arm": "Arm",
-  "DriveBase": "Drive Base",
-  "Intake": "Intake",
-  "Shooter": "Shooter"
+
+"SubsystemOverview": "Subsystem Overview",
+"Arm":"Arm",
+"Shooter":"Shooter",
+"Intake":"Intake",
+"DriveBase":"Drive Base"
+
 }
