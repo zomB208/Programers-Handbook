@@ -1,0 +1,374 @@
+---
+title: Intro to CSS
+---
+
+import { Callout } from 'nextra/components'
+import { Cards, Card } from 'nextra/components'
+
+# Intro to CSS
+
+CSS (Cascading Style Sheets) is a coding language used in Front-End Web Development that is able to style your webpage's content from HTML to become much more visually appealing and easier to navigate. There are numerous important aspects of CSS that can help you create the best webpage.
+
+**Side Note**: For the Intro to Web Design Pages, we recommend that you read each in **this order**:
+1. Intro to HTML
+2. Intro to CSS
+3. Intro to JS
+
+Similar to a series!
+
+### Does CSS have a definite format like HTML?
+No, not necessarily. For webpages, CSS acts as a side-kick to its HTML counterpart, making elements and attributes more visually appealing for both humans, and digital readers. However, it is important to organize your CSS selectors in a way that you can easily find each. For example, you should keep all of your **element** selectors, **.class** selectors, and **#id** selectors together to keep them organized.
+
+## Commenting in CSS
+
+Similar to HTML, CSS also has its own form of commenting important information for programmers to leave messages / reminders. However, it is different than the commenting found in HTML code. Commenting in CSS starts with an opening tag, ```/*```, and ends with a closing tag, ```*/```. Below is an example of commenting in CSS:
+
+```css
+p {
+  font-family: Helvetica;
+}
+/* TODO: Add a property and value for centering the paragraph text. */
+```
+
+## CSS Selectors
+
+Before learning how to stlye your HTML code with CSS, it is important to understand the structure of how the styling is implemeneted. In CSS, this can be done by creating selectors for your properties and attributes to be put in. The template for a CSS Selector begins with the specified targeted aspect of your HTML code based on the selector type you are choosing. You then insert the ```{ }``` key following your specified selector type to wrap their properties and values. There are 5 main types of selectors in CSS:
+- **Simple Selectors** target elements, classes, and id attributes to style the content of your webpage. These can also include id attribues and classes of specific elements to have more styling control. An example of a simple selector is as follows:
+
+```css
+.bold {
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+}
+```
+
+In the example above, any elements with the ```class``` attribute of ```.bold``` will recieve a font-weight of 600, will be colored black. If you want to learn more about some of the advanced simple selectors, check out the resource below:
+
+[CSS Simple Selectors Documentation](https://www.w3schools.com/css/css_selectors.asp)
+
+- **Combinator Selectors** target elements that are  descendants, childs, or siblings of other elements. Elements that are descendants of other elements use a ```(space)```, elements that are childs of other elements use a ```>```, and elements that are siblings use ```+``` or ```~``` if they are adjacent siblings or general siblings respectively. Here is an example of inputting CSS for a ```<p></p>``` element that is a descendant:
+
+```css
+section p {
+    text-align: center;
+}
+```
+
+In the code above, any ```<p></p>``` elements that are descendants of ```<section></section>``` elements have a centered text-alignment. Below is an example of which elements are descendants of their ancestor:
+
+![HTML Document Tree](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScdS2Fg-8zEpBMmFiaFc5kDGENFie-0Qa5MQ&s)
+
+However, the **child** of an element is slightly different. Childs are the "direct" descendants of their parent element, while a descendant of that same parent element can be any other element that is a "step" down from the parent.
+
+Here's an example:
+
+```html
+<main>
+    <header>
+        <h1>Hello World</h1>
+    </header>
+    <section>
+        <div>
+            <ol>
+                <ul></ul>
+                <ul></ul>
+            </ol>
+        </div>
+    </section>
+</main>
+```
+
+The ```<h1></h1>``` element is a **child** of the ```<header></header>``` element.
+
+The ```<ol></ol>``` element is not a **child** of the ```<section></section>``` element, but the ```<div></div>``` element is.
+
+The ```<ul></ul>``` elements are **descendants** of the ```<ol></ol>```, ```<div></div>```, and ```<section></section>``` elements.
+
+If you want to learn more about some of the advanced Combinator Selectors, check out the resource below:
+
+[CSS Combinator Selectors Documentation](https://www.w3schools.com/css/css_combinators.asp)
+
+- **Pseudo-class Selectors** target specific states of an element. These selectors use a ```:``` key and a specific keyword describing a state of the specified element. Here is an example below:
+
+```css
+a:hover {
+    color: rgb(0, 0, 255);
+}
+```
+
+In the selector above, any ```<a></a>``` element's color will be changed to blue when your cursor goes over it. There are many other values for Pseudo-class Selectors other than the ```hover``` attribute, which you can find in the resource below:
+
+[CSS Pseudo-class Selectors Documentation](https://www.w3schools.com/css/css_pseudo_classes.asp)
+
+- **Pseudo-element Selectors** target specific parts of an element. These selectors use the ```::``` key and a keyword describing a specific portion of the element (This can include "before" and "after" to add more content to your webpage!) Here is an example below:
+
+```css
+h2::first-line {
+    font-size: 12px;
+}
+```
+
+In the example above, the first line of an ```<h2></h2>``` element was given a font size property with a value of 12px. There are also many more attributes to Pseudo-element Selectors, which you can find in the resource below:
+
+[CSS Pseudo-element Selectors Documentation](https://www.w3schools.com/css/css_pseudo_elements.asp)
+
+- **Attribute Selectors** target attributes of elements, and in some cases, the values that they are set to. These selectors use the ```[ ]``` key with an **attribute** inputted within. This can be especially useful for elements that don't have their own ```class``` or ```id``` attribute, and can allow for more specification for styling specific elements only. Here is an example below:
+
+```css
+a[target="_blank"]
+color: rgb(0, 255, 0);
+```
+
+In the example above, any ```<a></a>``` elements with the ```target``` attribute equal to the value of ```_blank```, will have a color of green. If you want to learn about some of the more advanced attribute selectors, you can use the resource below:
+
+[CSS Attribute Selectors Documentation](https://www.w3schools.com/css/css_attribute_selectors.asp)
+
+## CSS Properties and Values
+
+```css
+h1, h2, p {
+    font-family: Roboto, Tahoma;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    max-width: 75%;
+}
+
+body {
+    max-width: 80%;
+    max-height: 80%;
+    background-color: rgb(211, 211, 211);
+}
+```
+
+Within CSS, there are many properties and values that programmers use to style their HTML content (Properties are before the colon, and values are after the colon). Together, they can provide your webpage the styling. Let's take a look at some of the most common CSS properties and values:
+
+- The ```background-color``` property changes the background of the specified object. It most commonly takes in a value set to **rgb()** or **hex code** for a color value.
+- The ```background-image``` property sets the background of an object to an image (This would be most commonly used in a selector for the ```<body></body>``` element to act as a background image for the whole webpage). This property has a value set to **url( )**, where the specified image address is inputted into the parenthesis.
+- The ```color``` property changes the text color of a specified object. It most commonly takes in a value set to **rgb()** or **hex code** for a color value.
+- The ```display``` property changes an element to act in different ways such as becoming its own line, an "inline" element (meaning it will take up the same line as other surrounding elements and flow onto the next line like words in a paragraph), and also other complex forms of display such as **Flexbox**, which we will cover in the **What is Flexbox?** section. This property takes in values including **block**, **inline-box**, **grid**, **flex**, and **none**.
+- The ```font-size``` property changes the font size (in pixels) of an object. Its most commonly used value is in **pixels** (px), but also can be set to a **rem** (root em) value. A rem value is proportional to the "root" font-size of your web browser, which is 16px (Ex: 0.5 rem = 8px, 1.0 rem = 16px, etc).
+- The ```font-style``` property changes the specified font of an object to become italicized. It can take in the value of **normal**, **italic**, or **oblique** (Which is very similar to italic).
+- The ```font-weight``` property changes the appearence of an element's text by changing its level of boldness. This property takes in a value of a number below 1000.
+- The ```height``` property changes the height of a specified object. It can have a value in **pixels**, and **percentage** (%).
+- The ```margin``` property changes the alignment of an object by creating different amounts of space around the object **outside** of the defined borders an element has. This property can be adjusted in several ways, including a specific ```margin-top```, ```margin-right```, ```margin-bottom```, or ```margin-left``` property to adjust a singular part of an element's alignment. This property can take in a value of **pixels**, or a value of **auto** to push the element to the opposite site of the webpage from what was stated in the property (Ex: the ```margin-left``` property would push an object to the far right side of the webpage). Using two margin elements of oppisite sides (Ex: ```margin-left``` and ```margin-right```), the object will be directly centered on your webpage no matter the width or height of the device's screen (This also works when having the ```margin``` property set to ```auto```, where it will be centered horizontally and vertically).
+- The ```max-width``` and ```min-width``` properties change the maximum or minimum widths an object can have on your webpage. These properties intake a value value **pixels**, and **percentage** (%).
+- The ```max-height``` and ```min-height``` properties change the maximum or minimum heights an object can have on your webpage. These properties intake a value of **pixels**, and **percentage** (%).
+- The ```padding``` property changes the alignment of an object by creating different amounts of space around the object **inside** of the defined borders an element has (Increases the size of the borders surrounding the element). Similar to the ```margin``` property, the ```padding``` property can also be adjusted into ```padding-top```, ```padding-right```, ```padding-bottom```, and ```padding-left``` properties. It can take in a value of **pixels**, or a value of **auto** (Which affects an object in a similar way to the ```margin``` property stated above).
+- The ```text-align``` property changes the horizontal alignment of text of a specified object. It can take in values such as **left**, **right**, and **center**.
+- The ```width``` property changes the width of a specified object. It can have a value in **pixels**, and also is commonly used with a **percentage** (%) value for devices with different screen sizes.
+
+## Types of CSS Implementation
+
+If you are only working with one file of **HTML** and can't connect it with a **CSS** file, you're in luck! There are **3** ways to implement CSS into your HTML code.
+1. **External CSS** is what you have previously learned through this page and the Intro to HTML page, where a seprate stlye sheet is being linked to the HTML file through the ```<link/>``` element to customize the content. This method of inputting CSS is the only method that requires an additional file that isn't an HTML file.
+
+Example:
+
+```css
+h1 {
+    color: rgb(0, 0, 255);
+    text-align: center;
+}
+```
+
+2. **Internal CSS** is where CSS is inputted into your HTML code in the ```<head></head>``` element by nesting your styling selectors and properties in the ```<style></style>``` element. We will be using this method in our **HTML Project** from the **Intro to HTML** page in the **Putting It All Together** section below.
+
+Example:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <style>
+            h2 {
+                color: rgb(255, 0,  125);
+            }
+            html {
+                font-family: Roboto, Tahoma;
+            }
+        </style>
+    </head>
+    <body>
+    </body>
+</html>
+```
+
+3. **Inline CSS** is where you input your CSS into singular lines of code by using the ```style``` attribute being set to the value of the CSS property.
+
+Example:
+
+```html
+<body>
+    <main>
+        <h1 style="text-align: center; font-weight: 500;">Hello World</h1>
+        <p style="color: rgb(0, 255, 0);"Coding is fun.</p>
+    </main>
+</body>
+```
+
+## What is Flexbox?
+
+Flexbox is a method that programmers use in CSS to be able to create flexible content on their webpage for different screen sizes of devices by adjusting the space around elements with different alignments to their axis. There are many different properties and values to consider when using Flexbox to have the best results:
+
+- For the ```display``` property, its value should be set to **flex** for Flexbox to work.
+- The ```flex-direction``` property dictates which direction the elements affected by Flexbox will be arranged along their axis. There are 4 different values for the ```flex-direction``` property: **row**, **row-reverse**, **column**, and **column-reverse**. The **row** value makes the elements aligned in rows from left-to-right, corresponding with the order they were put in through the HTML code. The **row-reverse** reverses the order of the elements in each row, where they move from right to left (essentially flipping the order of elements in each row). The **column** value puts the elements into a column. The **column-reverse** value flips the order of the elements in the column.
+- The ```flex-wrap``` property allows you to change the way flex elements act by allowing them to be formatted differently. Flex elements are placed in a singular line by default, but the ```flex-wrap``` property allows your flex items to "wrap" onto the next line. There are 3 values for this property, which are **no-wrap**, **wrap**,  and **wrap-reverse**. The **no-wrap** value makes the flex elements act normally, where they will all be placed on a singular line. The **wrap** value will make the flex elements wrap onto the next line. The **wrap-reverse** value will make the flex elements wrap onto the next line, but in reversed order.
+- The ```justify-content``` property spaces the flex elements out along their main axis in different ways by using the surrounding space to space them. There are many values for this property, but the most commonly used ones are **flex-start**, **flex-end**, **space-between**, **space-evenly**, **space-around**, and **center**. The **flex-start** value moves the flex elements to the starting-side of the flex-direction, which was explained above (This means that if you have a ```flex-direction``` property set to a value of **row-reverse**, a ```justify-content``` property with the value of **flex-start** would push your flex items in the **opposite direction** as if you had a ```flex-direction``` property set to the value of **row**!). In contrast, the **flex-end** value moves the flex elements to the ending-side of the flex-direction of the flex elements. The **space-between** value spaces out the flex elements where there is space between each element and no space between the first element and the start of the line, or with the ending element and the ending line. The **space-evenly** value spaces the flex elements in a way that there is equal spacing between every element, including the first element with the starting line and the last element with the ending line. The **space-around** value spaces out the elements where there is equal spacing "borders" between each element. Think of it as an element having padding on either side of it, and that same padding is applied to the same space once more due to the following element recieving its own padding. The **center** value spaces the flex elements along the center of their accessible space.
+- The ```align-items``` property spaces the flex elements out along thier cross axis in different ways by using the surounding space to space them (Note: The cross axis is the axis that is perpencidular to the main axis!). The ```align-items``` property is similar to the ```justify-content``` property, except it is affecting a different axis. There are many values for this property, including **flex-start**, **flex-end**, **center**, **baseline**, and **stretch**. The **flex-start**, **flex-end**, and **center** values act in the same way as in the ```justify-content``` property above, but instead are acting on a different axis. The **baseline** value aligns the flex items by aligning their **baselines**, which is the line that most letters sit on (like the lines in a notebook that you write on). The **stretch** value streches the flex elements to fit the total space available to them while still staying within boundaries given to them.
+- The ```align-content``` property spaces the lines that the flex elements sit on along their cross axis. There are many values for this property that are similar to the values of properties stated above, including **flex-start**, **flex-end**, **space-between**, **space-around**, **stretch**, and **center**. The **flex-start** value pushes the flex elements' lines to the start of the flex-direction within the space they are contained in. The **flex-end** property pushes the flex elements' lines to the end of the flex-direction within the space they are contained in. The **space-between** value spaces the flex elements' lines equally throughout the entire space they have access to, and has a similar effect to the **space-between** value from the ```justify-content``` property. The **space-around** value gives each flex element on their line equal spacing between each other, and acts in a similar way to the **space-around** value from the ```justify-content``` property. The **stretch** value stretches the flex elements and the lines that they sit on to take up the maximum amount of space they have access to within the space they are contained in. The **center** value aligns the flex elements and the lines they sit on to the center of the cross axis.
+
+Here is an example of what these properties and values would look like in CSS:
+
+```css
+.items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: space-around;
+}
+```
+
+Here is a good example of an image that showcases the effects that Flexbox has by using its properties and values:
+
+![CSS Flexbox Showcase](https://miro.medium.com/v2/resize:fit:1400/0*YeaUsQyhXSL1TCTH.png)
+
+## Putting it All Together
+
+We've made it! Keeping all of the CSS knowledge you have learned in mind, let's add some styling to our HTML Project from the **Intro to HTML** page.
+
+<Callout type={"info"} emoji={"💡"}> Read the **Intro to HTML** page to see the HTML Project created by using the page information. </Callout>
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+      h1 {
+        font-size: 3rem;
+        text-align: center;
+      }
+      nav {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+      }
+      nav ul {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 35px;
+      }
+      body {
+        font-family: Roboto, Tahoma;
+        background-color: rgb(245, 245, 245);
+      }
+      a {
+        color: rgb(0, 0, 0);
+      }
+      a:hover {
+        color: rgb(200, 100, 50);
+      }
+      img {
+        width: 80%;
+        height: 80%;
+        display: block;
+        margin: auto;
+        border-radius: 10px;
+        border: 2px solid rgb(0, 0, 0);
+      }
+      p {
+        text-align: center;
+        display: block;
+        margin: auto;
+        padding: 5px;
+      }
+      .nav {
+        width: 40%;
+        display: flex;
+        text-align: center;
+        margin: auto;
+      }
+      .nav > li {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items:center;
+        align-content: space-evenly;
+        padding-top: 3px;
+        padding-bottom: 3px;
+      }
+      .bold {
+        font-weight: 600;
+      }
+      .reasons {
+        text-align: center;
+        display: block;
+        margin: -15px 0;
+      }
+      .reasons ul {
+        display: inline-block
+      }
+      .created-by {
+        font-size: 12px;
+      }
+      #final {
+        margin-top: -15px;
+      }
+      #explanation {
+        margin-bottom: -15px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="nav">
+          <li><a href="#cat-image" class="img-of-cat">Image of Cat</a></li>
+          <li><a href="#reasons" class="why-i-like-cats">Why I Like Cats</a></li>
+        </ul>
+      </nav>
+      <h1 class="page-title">My Project</h1>
+    </header>
+    <p class="description">This is my project</p>
+    <img class="cat-image" id="cat-image" src="https://smb.ibsrv.net/imageresizer/image/article_manager/1200x1200/20586/516506/heroimage0.327162001643150501.jpg">
+    <p class="description">This is a kitten, I will name him <span class="bold">Cookie</span>.</p>
+    <p>Cats are one of my <i>favorite</i> animals!</p>
+    <p id="reasons">This is because they are:</p>
+    <div class="reasons">
+      <ul>
+        <li class="list">Funny</li>
+        <li class="list">Clever</li>
+        <li class="list">Energetic</li>
+        <li class="list">Fluffy</li>
+      </ul>
+    </div>
+    <p class="description" id="final">And so much more!</p>
+    <script src="script.js"></script>
+    <footer class="created-by">
+      <p>- Created by a fellow programmer</p>
+    </footer>
+  </body>
+</html>
+```
+
+Here's what the code above would create:
+
+<iframe src="https://funny-caterpillar.static.domains/html-project-with-css-additions"width="100%"height="800"frameborder="0"allowfullscreen></iframe>
+
+Compared to this same project when only using HTML, the CSS input truly helped the webpage become much more visually appealing!
+
+<Cards>
+<Card title="Intro to HTML" target="_self" href="https://curly-fiesta-pjj4w69wr95x3rj45-3000.app.github.dev/Intro_To_Web_Development/IntrotoHTML" />
+<Card title="Intro to JS" target="_self" href="https://curly-fiesta-pjj4w69wr95x3rj45-3000.app.github.dev/Intro_To_Web_Development/IntrotoJS" />
+
+</Cards>
