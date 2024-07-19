@@ -119,7 +119,7 @@ a[target="_blank"]
 color: rgb(0, 255, 0);
 ```
 
-In the example above, any ```<a></a>``` elements with the ```target``` attribute equal to the value of ```_blank```, will have a color of green. If you want to learn about some of the more advanced attribute selectors, you can use the resource below:
+In the example above, any ```<a></a>``` elements with the ```target``` attribute equal to the value of ```_blank```, will have a color of green. This code states that clicking the ```<a></a>``` elements on the webpage will lead to a link on a different tab. If you want to learn about some of the more advanced attribute selectors, you can use the resource below:
 
 [CSS Attribute Selectors Documentation](https://www.w3schools.com/css/css_attribute_selectors.asp)
 
@@ -236,6 +236,28 @@ Here is an example of what these properties and values would look like in CSS:
 Here is a good example of an image that showcases the effects that Flexbox has by using its properties and values:
 
 ![CSS Flexbox Showcase](https://miro.medium.com/v2/resize:fit:1400/0*YeaUsQyhXSL1TCTH.png)
+
+## CSS Variables
+
+In CSS, we can use variables to reuse certain properties in our code, such as specific colors we want to use over again. Here is an example below:
+
+```css
+html {
+  --color1: #caf2f7;
+  --color2: #eefdff;
+}
+```
+
+In the code above, we use a selector with an ```html``` type that holds two variables. Variables use a ```--``` sign, making them different from normal properties that we covered earlier. One other way you could state this code would be to use the ```:root``` selector, which essentially does the same function as the ```html``` selector. In the code below, you will see how you can call on variables to reuse them for your webpage:
+
+```css
+.window {
+  background-color: var(--color1)
+  border: 2px solid var(--color2)
+}
+```
+
+This will call upon the two variables we created to be able to use the same colors in a later instance.
 
 ## Putting it All Together
 
